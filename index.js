@@ -20,17 +20,17 @@ app.use(cors({
 ));
 
 const db = mysql.createPool({
-    host: 'db4free.net',
-    user: 'chatly',
-    password: 'Snap31081229@',
-    database: 'chatly'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 const options = {
-    password: "Snap31081229@",
-    user: "chatly",
-    database: "chatly",
-    host: "db4free.net",
+    password: process.env.DB_PASS,
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
     createDatabaseTable: true
 }
 
@@ -61,7 +61,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://mychatly.netlify.app",
         methods: ["GET", "POST"],
         credentials: true
     },
