@@ -43,8 +43,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.set('trust proxy', 1);
 app.use(session({
-	name: "name",
-	secret: "abcd",
+	name: process.env.SESS_NAME,
+	secret: process.env.SESS_SECRET,
 	resave: false,
 	saveUninitialized: false,
 	store: sessionStore,
