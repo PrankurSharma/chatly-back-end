@@ -10,7 +10,7 @@ const session = require('express-session');
 const mysqlStore = require('express-mysql-session')(session);
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-var port = process.env.port || 3001;
+var port = process.env.PORT || 3001;
 
 app.use(cors({
         origin: "https://mychatly.netlify.app",
