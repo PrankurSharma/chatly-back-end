@@ -84,12 +84,14 @@ io.on("connection", (socket) => {
 });
 
 app.post('/api/insert', (req, res) => {
+    let room = req.body.room_no;
+    let sender = req.body.sender;
     let message = req.body.message;
+    let time = req.body.time;
+    let sender_email = req.body.sender_email;
     const sqlInsert = "insert into messages (room_no, sender, msg, msg_time, sender_email) values (?, ?, ?, ?, ?)";
-    message.forEach(element => {
-        db.query(sqlInsert, [element.room, element.sender, element.message, element.time, element.sender_email], (err, result) => {
-            res.status(200).json({});
-        }); 
+    db.query(sqlInsert, [room, sender, message, time, sender_email], (err, result) => {
+        res.status(200).json({});
     });
 });
 
